@@ -57,11 +57,11 @@
 
             echo "C++ Development Environment"
             echo "======================================"
-            echo "$(g++ --version | head -n 1)"
+            echo "$(g++ --version  | head -n 1)"
             echo "$(make --version | head -n 1)"
             echo ""
-            echo "Build the project:  nix build .#vector_structure"
-            echo "Run the project:    nix run   .#vector_structure"
+            echo "Build the project:  nix build"
+            echo "Run the project:    nix run"
             echo ""
             echo "Happy coding!"
           '';
