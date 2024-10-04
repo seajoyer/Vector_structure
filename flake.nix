@@ -17,7 +17,7 @@
 
           nativeBuildInputs = with pkgs; [ gnumake ];
 
-          buildInputs = with pkgs; [ ];
+          buildInputs = with pkgs; [ libcxx ];
 
           buildPhase = ''
             make -j $($NIX_BUILD_CORES)
@@ -46,8 +46,8 @@
           buildInputs = with pkgs; [ clang libcxx ];
 
           shellHook = ''
-            export CC=clang
-            export CXX=clang++
+            export CC=g++
+            export CXX=g++
             export CXXFLAGS="''${CXXFLAGS:-}"
 
             export CCACHE_DIR=$HOME/.ccache
