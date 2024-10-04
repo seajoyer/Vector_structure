@@ -15,9 +15,9 @@
           name = "vector_structure";
           src = ./.;
 
-          nativeBuildInputs = with pkgs; [ gnumake ];
+          nativeBuildInputs = with pkgs; [ gnumake libgcc ];
 
-          buildInputs = with pkgs; [ libcxx ];
+          buildInputs = with pkgs; [  ];
 
           buildPhase = ''
             make -j $($NIX_BUILD_CORES)
@@ -41,12 +41,12 @@
         };
 
         devShells.default = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [ ccache gnumake git git-filter-repo bear ];
+          nativeBuildInputs = with pkgs; [ ccache gnumake git git-filter-repo bear libgcc ];
 
-          buildInputs = with pkgs; [ clang libcxx ];
+          buildInputs = with pkgs; [  ];
 
           shellHook = ''
-            export CC=g++
+            export CC=gcc
             export CXX=g++
             export CXXFLAGS="''${CXXFLAGS:-}"
 
@@ -57,7 +57,7 @@
 
             echo "C++ Development Environment"
             echo "======================================"
-            echo "$(clang --version | head -n 1)"
+            echo "$(g++ --version | head -n 1)"
             echo "$(make --version | head -n 1)"
             echo ""
             echo "Build the project:  nix build .#vector_structure"
